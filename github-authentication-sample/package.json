@@ -36,6 +36,6 @@
 		"typescript": "^3.5.1"
 	},
 	"dependencies": {
-		"@octokit/rest": "^18.0.0"
+		"@octokit/rest": "^18.3.5"
 	}
 }
