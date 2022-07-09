@@ -21,7 +21,7 @@
 		"watch": "tsc -watch -p ./"
 	},
 	"dependencies": {
-		"mkdirp": "^0.5.1",
+		"mkdirp": "^1.0.4",
 		"rimraf": "^2.6.2"
 	},
 	"devDependencies": {
