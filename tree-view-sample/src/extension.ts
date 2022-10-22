@@ -6,12 +6,15 @@ import { DepNodeProvider, Dependency } from './nodeDependencies';
 import { JsonOutlineProvider } from './jsonOutline';
 import { FtpExplorer } from './ftpExplorer';
 import { FileExplorer } from './fileExplorer';
+import { TestViewDragAndDrop } from './testViewDragAndDrop';
 import { TestView } from './testView';
 
 export function activate(context: vscode.ExtensionContext) {
+	const rootPath = (vscode.workspace.workspaceFolders && (vscode.workspace.workspaceFolders.length > 0))
+		? vscode.workspace.workspaceFolders[0].uri.fsPath : undefined;
 
 	// Samples of `window.registerTreeDataProvider`
-	const nodeDependenciesProvider = new DepNodeProvider(vscode.workspace.rootPath);
+	const nodeDependenciesProvider = new DepNodeProvider(rootPath);
 	vscode.window.registerTreeDataProvider('nodeDependencies', nodeDependenciesProvider);
 	vscode.commands.registerCommand('nodeDependencies.refreshEntry', () => nodeDependenciesProvider.refresh());
 	vscode.commands.registerCommand('extension.openPackageOnNpm', moduleName => vscode.commands.executeCommand('vscode.open', vscode.Uri.parse(`https://www.npmjs.com/package/${moduleName}`)));
@@ -23,7 +26,17 @@ export function activate(context: vscode.ExtensionContext) {
 	vscode.window.registerTreeDataProvider('jsonOutline', jsonOutlineProvider);
 	vscode.commands.registerCommand('jsonOutline.refresh', () => jsonOutlineProvider.refresh());
 	vscode.commands.registerCommand('jsonOutline.refreshNode', offset => jsonOutlineProvider.refresh(offset));
-	vscode.commands.registerCommand('jsonOutline.renameNode', offset => jsonOutlineProvider.rename(offset));
+	vscode.commands.registerCommand('jsonOutline.renameNode', args => {
+		let offset = undefined;
+		if(args.selectedTreeItems && args.selectedTreeItems.length){
+			offset = args.selectedTreeItems[0];
+		}else if(typeof args === 'number'){
+			offset = args;
+		}
+		if(offset){
+			jsonOutlineProvider.rename(offset);
+		}
+	});
 	vscode.commands.registerCommand('extension.openJsonSelection', range => jsonOutlineProvider.select(range));
 
 	// Samples of `window.createView`
@@ -32,4 +45,10 @@ export function activate(context: vscode.ExtensionContext) {
 
 	// Test View
 	new TestView(context);
+
+	// Drag and Drop proposed API sample
+	// This check is for older versions of VS Code that don't have the most up-to-date tree drag and drop API proposal.
+	if (typeof vscode.DataTransferItem === 'function') {
+		new TestViewDragAndDrop(context);
+	}
 }

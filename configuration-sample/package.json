@@ -4,6 +4,12 @@
 	"description": "How to contribute and use configurations in VS Code",
 	"version": "0.0.1",
 	"publisher": "vscode-samples",
+	"private": true,
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Microsoft/vscode-extension-samples"
+	},
 	"engines": {
 		"vscode": "^1.32.0"
 	},
@@ -22,7 +28,69 @@
 	"contributes": {
 		"configuration": [
 			{
-				"title": "Configuration Samples",
+				"id": "widgetSamples",
+				"title": "Settings Editor Widget Samples",
+				"order": 2,
+				"properties": {
+					"conf.settingsEditor.numericObjectSetting": {
+						"type": "object",
+						"order": 2,
+						"description": "An example numeric object setting.",
+						"properties": {
+							"intprop": {
+								"type": "integer",
+								"description": "Integer property"
+							},
+							"numprop": {
+								"type": "number",
+								"description": "Numeric property"
+							}
+						},
+						"additionalProperties": false
+					},
+					"conf.settingsEditor.boolObjectSetting": {
+						"type": "object",
+						"order": 1,
+						"description": "An example bool object setting.",
+						"properties": {
+							"prop1": {
+								"type": "boolean",
+								"description": "Property 1"
+							},
+							"prop2": {
+								"type": "boolean",
+								"description": "Property 2"
+							}
+						},
+						"additionalProperties": false,
+						"default": {
+							"prop1": true,
+							"prop2": false
+						}
+					},
+					"conf.settingsEditor.uniqueEnumArraySetting": {
+						"type": "array",
+						"description": "An example enum array setting.",
+						"items": {
+							"type": "string",
+							"enum": [
+								"red",
+								"yellow",
+								"blue"
+							]
+						},
+						"uniqueItems": true
+					},
+					"conf.settingsEditor.multilineSetting": {
+						"type": "string",
+						"description": "An example multiline setting.",
+						"editPresentation": "multilineText"
+					}
+				}
+			},
+			{
+				"id": "configurationSamples",
+				"title": "Configuration Sample",
 				"properties": {
 					"conf.view.showOnWindowOpen": {
 						"type": "string",
@@ -48,6 +116,19 @@
 						"default": false,
 						"description": "Shows the size of the document",
 						"scope": "language-overridable"
+					}
+				}
+			},
+			{
+				"id": "anotherCategory",
+				"title": "Misc Category",
+				"order": 1,
+				"properties": {
+					"conf.settingsEditor.firstMisc": {
+						"type": "string"
+					},
+					"conf.settingsEditor.secondMisc": {
+						"type": "string"
 					}
 				}
 			}
@@ -82,11 +163,11 @@
 		"watch": "tsc -watch -p ./"
 	},
 	"devDependencies": {
-		"@types/node": "^12.12.0",
-		"@typescript-eslint/eslint-plugin": "^3.0.2",
-		"@typescript-eslint/parser": "^3.0.2",
-		"eslint": "^7.1.0",
-		"typescript": "^4.0.2",
-		"@types/vscode": "^1.40.0"
+		"@types/node": "^16.11.7",
+		"@types/vscode": "^1.40.0",
+		"@typescript-eslint/eslint-plugin": "^5.30.0",
+		"@typescript-eslint/parser": "^5.30.0",
+		"eslint": "^8.13.0",
+		"typescript": "^4.8.4"
 	}
 }

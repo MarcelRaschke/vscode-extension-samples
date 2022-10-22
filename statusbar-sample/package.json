@@ -4,6 +4,8 @@
 	"description": "Shows the number of selected lines in the status bar",
 	"version": "0.0.1",
 	"publisher": "vscode-samples",
+	"private": true,
+	"license": "MIT",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/Microsoft/vscode-extension-samples"
@@ -28,10 +30,10 @@
 		"watch": "tsc -watch -p ./"
 	},
 	"devDependencies": {
-		"typescript": "^4.0.2",
-		"@typescript-eslint/eslint-plugin": "^3.0.2",
-		"@typescript-eslint/parser": "^3.0.2",
-		"eslint": "^7.1.0",
-		"@types/vscode": "^1.32.0"
+		"@types/vscode": "^1.32.0",
+		"@typescript-eslint/eslint-plugin": "^5.30.0",
+		"@typescript-eslint/parser": "^5.30.0",
+		"eslint": "^8.13.0",
+		"typescript": "^4.8.4"
 	}
 }

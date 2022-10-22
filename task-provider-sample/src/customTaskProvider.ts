@@ -21,7 +21,7 @@ export class CustomBuildTaskProvider implements vscode.TaskProvider {
 	static CustomBuildScriptType = 'custombuildscript';
 	private tasks: vscode.Task[] | undefined;
 
-	// We use a CustomExecution task when state needs to be shared accross runs of the task or when 
+	// We use a CustomExecution task when state needs to be shared across runs of the task or when 
 	// the task requires use of some VS Code API to run.
 	// If you don't need to share state between runs and if you don't need to execute VS Code API in your task, 
 	// then a simple ShellExecution or ProcessExecution should be enough.
@@ -80,8 +80,8 @@ export class CustomBuildTaskProvider implements vscode.TaskProvider {
 class CustomBuildTaskTerminal implements vscode.Pseudoterminal {
 	private writeEmitter = new vscode.EventEmitter<string>();
 	onDidWrite: vscode.Event<string> = this.writeEmitter.event;
-	private closeEmitter = new vscode.EventEmitter<void>();
-	onDidClose?: vscode.Event<void> = this.closeEmitter.event;
+	private closeEmitter = new vscode.EventEmitter<number>();
+	onDidClose?: vscode.Event<number> = this.closeEmitter.event;
 
 	private fileWatcher: vscode.FileSystemWatcher | undefined;
 
@@ -126,7 +126,7 @@ class CustomBuildTaskTerminal implements vscode.Pseudoterminal {
 				this.setSharedState(date.toTimeString() + ' ' + date.toDateString());
 				this.writeEmitter.fire('Build complete.\r\n\r\n');
 				if (this.flags.indexOf('watch') === -1) {
-					this.closeEmitter.fire();
+					this.closeEmitter.fire(0);
 					resolve();
 				}
 			}, isIncremental ? 1000 : 4000);

@@ -1,10 +1,12 @@
 {
-	"enableProposedApi": true,
+	"enabledApiProposals": [],
 	"name": "proposed-api-sample",
 	"displayName": "proposed-api-sample",
 	"description": "Sample showing how to use Proposed API",
 	"version": "0.0.1",
 	"publisher": "vscode-samples",
+	"private": true,
+	"license": "MIT",
 	"repository": "https://github.com/Microsoft/vscode-extension-samples",
 	"engines": {
 		"vscode": "^1.34.0"
@@ -30,15 +32,15 @@
 		"lint": "eslint . --ext .ts,.tsx",
 		"watch": "tsc -watch -p ./",
 		"download-api": "vscode-dts dev",
-		"postdownload-api": "vscode-dts master",
+		"postdownload-api": "vscode-dts main",
 		"postinstall": "npm run download-api"
 	},
 	"devDependencies": {
-		"@types/node": "^12.12.0",
-		"@typescript-eslint/eslint-plugin": "^3.0.2",
-		"@typescript-eslint/parser": "^3.0.2",
-		"eslint": "^7.1.0",
-		"typescript": "^4.0.2",
-		"vscode-dts": "^0.3.1"
+		"@types/node": "^16.11.7",
+		"@typescript-eslint/eslint-plugin": "^5.30.0",
+		"@typescript-eslint/parser": "^5.30.0",
+		"eslint": "^8.13.0",
+		"typescript": "^4.8.4",
+		"vscode-dts": "^0.3.2"
 	}
 }

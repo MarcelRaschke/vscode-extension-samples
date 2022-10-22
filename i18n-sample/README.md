@@ -16,7 +16,7 @@ This folder contains a sample VS code extension that shows how to use the packag
 
 ## Running the Sample
 
-Localization values are only applied when running the gulp `build` task. During normally development which uses `tsc -watch` to compile no localization post processing happends. This speeds up development time.
+Localization values are only applied when running the gulp `build` task. During normally development which uses `tsc -watch` to compile no localization post processing happens. This speeds up development time.
 
 1. Ensure that you have `gulp-cli` installed globally using `npm install --global gulp-cli`.
 1. Run `npm install` to bring in the dependencies.
@@ -29,7 +29,7 @@ See the demo.gif file in this repository for a screencast.
 
 ## How to translate our extension
 
-VS Code itself uses [Transifex](https://www.transifex.com/) to manage its translations. This might be an option for your extension as well, however none of the nls tooling provided by `vscode-nls` or `vscode-nls-dev` requires Transifex as its translation platform. So you are free to choose a different one.
+VS Code doesn't recommend a translation platform. None of the nls tooling provided by `vscode-nls` or `vscode-nls-dev` requires a specific translation platform. So you are free to choose the one you like.
 
 ## What happens behind the scenes
 

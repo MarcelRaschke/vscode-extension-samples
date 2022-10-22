@@ -27,6 +27,13 @@ const samples = [
     contributions: []
   },
   {
+    description: 'Webview Codicons Sample',
+    path: 'webview-codicons-sample',
+    guide: null,
+    apis: [],
+    contributions: []
+  },
+  {
     description: 'Status Bar Sample',
     path: 'statusbar-sample',
     guide: null,
@@ -76,7 +83,7 @@ const samples = [
     contributions: []
   },
   {
-    description: 'Editor Decoractor Sample',
+    description: 'Editor Decorator Sample',
     path: 'decorator-sample',
     guide: null,
     apis: [
@@ -130,7 +137,7 @@ const samples = [
   },
   {
     description: 'Product Icon Theme Sample',
-    path: 'theme-sample',
+    path: 'product-icon-theme-sample',
     guide: '/api/extension-guides/product-icon-theme',
     apis: [],
     contributions: ['productIconThemes']
@@ -225,6 +232,34 @@ const samples = [
     apis: ['languages.registerDocumentSemanticTokensProvider', 'vscode.DocumentSemanticTokensProvider'],
     contributions: []
   },
+  {
+    description: 'Test Provider Sample',
+    path: 'test-provider-sample',
+    guide: null,
+    apis: [],
+    contributions: []
+  },
+  {
+    description: 'Getting Started Sample',
+    path: 'getting-started-sample',
+    guide: null,
+    apis: [],
+    contributions: []
+  },
+  {
+    description: 'notebook-renderer-sample',
+    path: 'notebook-renderer-sample',
+    guide: "/api/extension-guides/notebook#notebook-renderer",
+    apis: [],
+    contributions: ["notebookRenderer"]
+  },
+  {
+    description: 'notebook-extend-markdown-renderer-sample',
+    path: 'notebook-extend-markdown-renderer-sample',
+    guide: "/api/extension-guides/notebook#notebook-renderer",
+    apis: [],
+    contributions: ["notebookRenderer"]
+  },
   { description: 'configuration-sample', excludeFromReadme: true, path: 'configuration-sample', guide: null, apis: [], contributions: [] },
   { description: 'contentprovider-sample', excludeFromReadme: true, path: 'contentprovider-sample', guide: null, apis: [], contributions: [] },
   { description: 'nodefs-provider-sample', excludeFromReadme: true, path: 'nodefs-provider-sample', guide: null, apis: [], contributions: [] },
@@ -232,7 +267,20 @@ const samples = [
   { description: 'quickinput-sample', excludeFromReadme: true, path: 'quickinput-sample', guide: null, apis: [], contributions: [] },
   { description: 'diagnostic-related-information-sample', excludeFromReadme: true, path: 'diagnostic-related-information-sample', guide: null, apis: [], contributions: [] },
   { description: 'fsconsumer-sample', excludeFromReadme: true, path: 'fsconsumer-sample', guide: null, apis: [], contributions: [] },
- 
+  { description: 'github-authentication-sample', excludeFromReadme: true, path: 'github-authentication-sample', guide: null, apis: [], contributions: [] },
+  { description: 'helloworld-sample', excludeFromReadme: true, path: 'helloworld-sample', guide: null, apis: [], contributions: [] },
+  { description: 'helloworld-test-sample', excludeFromReadme: true, path: 'helloworld-test-sample', guide: null, apis: [], contributions: [] },
+  { description: 'helloworld-web-sample', excludeFromReadme: true, path: 'helloworld-web-sample', guide: null, apis: [], contributions: [] },
+  { description: 'inline-completions', excludeFromReadme: true, path: 'inline-completions', guide: null, apis: [], contributions: [] },
+  { description: 'notebook-renderer-react-sample', excludeFromReadme: true, path: 'notebook-renderer-react-sample', guide: null, apis: [], contributions: [] },
+  { description: 'proposed-api-sample', excludeFromReadme: true, path: 'proposed-api-sample', guide: null, apis: [], contributions: [] },
+  { description: 'virtual-document-sample', excludeFromReadme: true, path: 'virtual-document-sample', guide: null, apis: [], contributions: [] },
+  { description: 'webpack-sample', excludeFromReadme: true, path: 'webpack-sample', guide: null, apis: [], contributions: [] },
+  { description: 'welcome-view-content-sample', excludeFromReadme: true, path: 'welcome-view-content-sample', guide: null, apis: [], contributions: [] },
+  { description: 'document-paste', excludeFromReadme: true, path: 'document-paste', guide: null, apis: [], contributions: [] },
+  { description: 'drop-on-document', excludeFromReadme: true, path: 'drop-on-document', guide: null, apis: [], contributions: [] },
+  { description: 'uri-handler-sample', excludeFromReadme: true, path: 'uri-handler-sample', guide: null, apis: [], contributions: [] },
+  { description: 'authenticationprovider-sample', excludeFromReadme: true, path: 'authenticationprovider-sample', guide: null, apis: [], contributions: [] },
 ]
 
 /** LSP specific samples */
@@ -273,7 +321,14 @@ const lspSamples = [
       'https://github.com/Microsoft/vscode/wiki/Extension-Authoring:-Adopting-Multi-Root-Workspace-APIs#language-client--language-server',
     apis: [],
     contributions: []
-  }
+  },
+  {
+    description: 'LSP Web Extension Sample',
+    path: 'lsp-web-extension-sample',
+    guide: '/api/language-extensions/language-server-extension-guide',
+    apis: [],
+    contributions: []
+  },
 ]
 /**
  * LSP specific samples

@@ -26,10 +26,22 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.window.registerWebviewPanelSerializer(CatCodingPanel.viewType, {
 			async deserializeWebviewPanel(webviewPanel: vscode.WebviewPanel, state: any) {
 				console.log(`Got state: ${state}`);
+				// Reset the webview options so we use latest uri for `localResourceRoots`.
+				webviewPanel.webview.options = getWebviewOptions(context.extensionUri);
 				CatCodingPanel.revive(webviewPanel, context.extensionUri);
 			}
 		});
 	}
+}
+
+function getWebviewOptions(extensionUri: vscode.Uri): vscode.WebviewOptions {
+	return {
+		// Enable javascript in the webview
+		enableScripts: true,
+
+		// And restrict the webview to only loading content from our extension's `media` directory.
+		localResourceRoots: [vscode.Uri.joinPath(extensionUri, 'media')]
+	};
 }
 
 /**
@@ -63,13 +75,7 @@ class CatCodingPanel {
 			CatCodingPanel.viewType,
 			'Cat Coding',
 			column || vscode.ViewColumn.One,
-			{
-				// Enable javascript in the webview
-				enableScripts: true,
-
-				// And restrict the webview to only loading content from our extension's `media` directory.
-				localResourceRoots: [vscode.Uri.joinPath(extensionUri, 'media')]
-			}
+			getWebviewOptions(extensionUri),
 		);
 
 		CatCodingPanel.currentPanel = new CatCodingPanel(panel, extensionUri);
@@ -87,7 +93,7 @@ class CatCodingPanel {
 		this._update();
 
 		// Listen for when the panel is disposed
-		// This happens when the user closes the panel or when the panel is closed programatically
+		// This happens when the user closes the panel or when the panel is closed programmatically
 		this._panel.onDidDispose(() => this.dispose(), null, this._disposables);
 
 		// Update the content based on view changes
